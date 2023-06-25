@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
   template: `<div>
     <h1>I am events list</h1>
     <hr />
-    <event-thumbnail
-      (eventClick)="handleEventClicked($event)"
-      [eventInput]="event"
-    ></event-thumbnail>
+    <event-thumbnail #thumbnail [eventInput]="event"></event-thumbnail>
+    <button class="btn btn-primary" (click)="thumbnail.logFoo()">
+      Log me some foo
+    </button>
   </div>`,
 })
 export class EventsListComponent {
@@ -25,8 +25,4 @@ export class EventsListComponent {
       country: 'NL',
     },
   };
-
-  handleEventClicked(data) {
-    console.log('received', data);
-  }
 }
